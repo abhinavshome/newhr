@@ -26,6 +26,12 @@
     <link href="./vendor/css/jqtree.css" rel="stylesheet" />
     <link href="sidebar-menu.css" rel="stylesheet" />
 
+    <link
+      href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+
     <script>
       $(function () {
         $("#menu").menu();
@@ -417,15 +423,9 @@
                     </tr>
                   </thead>
                 </table>
-
               </div>
             </div>
           </div>
-          <link
-            href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css"
-            rel="stylesheet"
-          />
-          <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
           <script>
             new DataTable("#example", {
               ajax: "data.json",
