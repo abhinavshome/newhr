@@ -31,6 +31,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/2.0.0/js/dataTables.select.min.js"></script>
 
     <script>
       $(function () {
@@ -410,6 +411,11 @@
             <div class="bg-white px-8 py-4 shadow-md text-gray-600">
               <h2 class="font-bold">List Of Offices</h2>
               <hr />
+              <div class="mt-12">
+                <button class="bg-[#3973a4] text-white px-4 py-1 text-sm font-semibold">Add New</button>
+                <button class="bg-[#3973a4] text-white px-4 py-1 text-sm font-semibold" onclick="edit()">Edit</button>
+                <button class="bg-[#3973a4] text-white px-4 py-1 text-sm font-semibold">Excel</button>
+              </div>
               <div>
                 <table id="example" class="display table" style="width: 100%">
                   <thead>
@@ -427,9 +433,30 @@
             </div>
           </div>
           <script>
-            new DataTable("#example", {
-              ajax: "data.json",
+            var table = $('#example').DataTable({
+                ajax: {
+                  url: "data.json"
+                },
+                select: {
+                    style: 'single' // Enables single select mode
+                }
             });
+            var rowData = null;
+            table.on("click", "tbody tr", function (e) {
+              e.currentTarget.classList.toggle("selected");
+            });
+            table.on('select', function (e, dt, type, indexes) {
+                rowData = table.row(indexes).data();
+                console.log("Selected Row Data:", rowData);
+            });
+            function edit() {
+              if(!rowData) {
+                alert('Please select a row first!');
+                return false;
+              } 
+              console.log(rowData)
+              location.href = `/edit?id=${rowData[3]}`
+            }
           </script>
         </div>
         <!-- Content End -->

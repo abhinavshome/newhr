@@ -21,8 +21,8 @@ body {
 }
 
 .table th {
-  background-color: #66A3E0;
-  color: #fff!important;
+  background-color: #66a3e0;
+  color: #fff !important;
   font-weight: bold;
   font-size: 14px;
   font-family: Verdana;
@@ -33,6 +33,6 @@ body {
   font-size: 14px !important;
 }
 
- .dt-layout-row {
+.dt-layout-row {
   font-size: 14px !important;
 }
